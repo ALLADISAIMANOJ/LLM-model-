@@ -67,7 +67,7 @@ def chatbot(api_key, query_text, file_data, file_type):
         model="gpt-3.5-turbo", messages=messages, stream=True
     )
     
-    #response_text = st.empty()
+
     response_line = ""
     for chunk in chat:
         chunk_message = chunk['choices'][0]['delta']
@@ -85,18 +85,8 @@ async def upload_file(file: UploadFile = File(...), question: str = Form(...)):
 
     if file_type not in allowed_extensions:
         raise HTTPException(status_code=400, detail="File type not supported")
-    
-    # print(question) 
-    # print(file_type)
 
     binary_data = await file.read()
-    # save_to = UPLOADED_DIR/file.filename    
-    # with open(save_to,'wb') as f:
-    #     f.write(binary_data)
-    # # Save the file to a predefined directory
-    # file_path = f"uploads/{file.filename}"
-    # with open(file_path, "wb") as buffer:
-    #     shutil.copyfileobj(file.file, buffer)
     file_data = ""
     print("file data is ",file_data)
     if file_type == ".csv":
@@ -121,27 +111,3 @@ async def upload_file(file: UploadFile = File(...), question: str = Form(...)):
     print("After reading the file name is ", file_data)
     response_line = chatbot(OPENAI_API_KEY, question, text_content , file_type)
     return JSONResponse(content={"result":response_line})
-
-class Response(BaseModel):
-    result: str
-# @app.post("/predict", response_model=Response)
-# def predict() -> Any:
-#     # Set your OpenAI API key here
-#     openai.api_key = OPENAI_API_KEY
-
-#     # Your logic to process the query using OpenAI's API
-#     response = openai.ChatCompletion.create(
-#         model="gpt-3.5-turbo",
-#         messages=[{"role": "system", "content": "You are a professional Question and Answer AI Assistant."}],
-#         max_tokens=50,
-#         temperature=0.7,
-#         stop=["\n"],
-#     )
-#     return {"result": response['choices'][0]['message']['content'].strip() }
-
-# @app.post("/predict", response_model = Response)
-# def predict() -> Any:
-  
-#   #implement this code block
-  
-#   return {"result": "hello world!"}

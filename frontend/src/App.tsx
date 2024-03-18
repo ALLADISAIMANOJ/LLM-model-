@@ -4,7 +4,6 @@ import "./App.css";
 export default function App() {
   const [result, setResult] = useState();
   const [question, setQuestion] = useState();
-  // const [file, setFile] = useState();
   const [files, setFiles] = useState<FileList | null>(null);
   const [fileType, setFileType] = useState("");
   const [showNotification, setShowNotification] = useState(false);
@@ -19,9 +18,6 @@ export default function App() {
     setQuestion(event.target.value);
   };
 
-  // const handleFileChange = (event: any) => {
-  //   setFile(event.target.files[0]);
-  // };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = event.target.files;
@@ -30,70 +26,11 @@ export default function App() {
     }
   };
 
-  // const handleSubmit = async(event: any) => {
-  //   event.preventDefault();
-
-  //   const formData = new FormData();
-
-  //   if (file) {
-  //     formData.append("file", file);
-  //   }
-  //   if (question) {
-  //     formData.append("question", question);
-  //   }
-    
-  //   const url =  "http://127.0.0.1:8000/upload";
-
-  
-  //   const response =  await fetch(url, {
-  //     method: "POST",
-  //     body: formData,
-  //   })
-  //     .then((response) =>response.json())
-     
-  //     .then((data) => {
-  //       setResult(data.result)
-  //       console.log("data",data.result)
-  //       setShowNotification(true);
-  //       setNotificationContent("File uploaded successfully!");
-  //       setTimeout(() => {
-  //       setShowNotification(false);
-  //       setNotificationContent("");
-  //     }, 3000); // Hide notification after 3 seconds
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error", error);
-  //       setShowNotification(true);
-  //       setNotificationContent(error.message); // Display the error message from the backend
-  //       setTimeout(() => {
-  //       setShowNotification(false);
-  //       setNotificationContent("");
-  //   }, 3000);
-  //     });
-  
-  // };
   const handleSubmit = async (event: any) => {
     event.preventDefault();
   
     const formData = new FormData();
   
-    // if (file) {
-    //   formData.append("file", file);
-    // }
-
-    // if (file) {
-    //   const fileSizeInBytes = file.size;
-    //   const maxSizeInBytes = 1 * 1024 * 1024; // 20MB limit
-  
-    //   if (fileSizeInBytes > maxSizeInBytes) {
-    //     setShowNotification(true);
-    //     setNotificationContent("File size limit exceeded (max 20MB)");
-    //     setTimeout(() => {
-    //       setShowNotification(false);
-    //       setNotificationContent("");
-    //     }, 3000); // Hide notification after 3 seconds
-    //     return; // Stop further processing
-    //   }
     if (files && files.length > 0) {
       const file = files[0]; // Assuming only one file is selected
       const fileSizeInBytes = file.size;
@@ -101,7 +38,7 @@ export default function App() {
 
       if (fileSizeInBytes > maxSizeInBytes) {
         setShowNotification(true);
-        setNotificationContent("File size limit exceeded (max 20MB)");
+        setNotificationContent("File size limit exceeded (max 5MB)");
         setTimeout(() => {
           setShowNotification(false);
           setNotificationContent("");
@@ -156,6 +93,7 @@ export default function App() {
         </div>
       )}
       <form onSubmit={handleSubmit} className="form">
+        <label><b>This is the openAI's gpt-3.5-turbo LLM model. This model's maximum context length is of 16385 tokens</b> </label>
         <label className="questionLabel" htmlFor="question">
           Question:
         </label>
