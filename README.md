@@ -45,18 +45,35 @@ To set up and run the project, follow these steps:
    conda create -n chatbot python=3.10
    conda activate chatbot
    pip install -r requirements.txt
+   ```
+
+3. Create a `.env` file in the `backend` directory to store sensitive information like your API token:
+   ```
+   touch .env
+   ```
+   Open the `.env` file and add your OpenAI API key in the following format:
+   ```
+   OPENAI_API_KEY=your_api_key_here
+   ```
+   Ensure that the `.env` file is added to your `.gitignore` to prevent it from being committed to version control and exposed publicly.
+
+
+
+4. Launch the backend server:
+   ```
    uvicorn main:app --reload
    ```
 
-3. Set up the frontend:
+5. Set up the frontend:
    ```
    cd ../frontend
    npm install
    npm start
    ```
 
-4. Access the application in your browser at [http://localhost:3000](http://localhost:3000).
+6. Access the application in your browser at [http://localhost:3000](http://localhost:3000).
 
 ## Conclusion
 
 This project combines the power of Python for backend processing, FastAPI for API development, OpenAI's GPT-3.5 Turbo model for natural language understanding, and React for creating an interactive user interface. The chosen technologies and approach ensure efficient data handling, seamless communication between frontend and backend, and an intuitive user experience.
+
