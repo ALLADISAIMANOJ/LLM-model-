@@ -1,0 +1,115 @@
+.App {
+  text-align: center;
+}
+
+/* App Block */
+.appBlock {
+  background-color: #f0f0f0; /* Light gray background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+/* Form Styling */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Question Label */
+.questionLabel {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* File Label */
+.fileLabel {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* File Type Select */
+.fileTypeSelect {
+  width: 200px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* File Input Styling */
+.fileInput {
+  margin-top: 8px;
+}
+
+/* Submit Button Styling */
+.submitBtn {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitBtn:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Result Output Styling */
+.resultOutput {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #4caf50; /* Green color for success */
+}
+
+/* Notification Styling */
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50; /* Green color for success */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 9999; /* Ensure notification appears above other elements */
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
